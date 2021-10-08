@@ -16,14 +16,14 @@ const UsuarioSchema = Schema({
         require: true
     },
     online:{
-        type: Boolean,
-        require: false
+        type: Boolean,       
+        default: false
     }
 });
 
 
 UsuarioSchema.method('toJSON', function(){
-    const {__v, _id, password, online, ...object} = this.toObject();
+    const {__v, _id, password, ...object} = this.toObject();  // se extrae lo que no se quiere mostart
     object.uid = _id;
     return object;
 })

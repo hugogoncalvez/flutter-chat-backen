@@ -106,25 +106,25 @@ const login = async (req, res = response) => {
 
     }
 
-    return res.json({
-        ok: true,
-        msg: 'login'
-    });
+    // return res.json({
+    //     ok: true,
+    //     msg: 'login'
+    // });
 }
 
 const renewToken = async (req, res = response) => {
 
     const uid = req.uid;
 
-    const nuevoJWT = await generarJWT(uid);
+    const token = await generarJWT(uid);
 
-    const usuarioUID = await Usuario.findById( uid );
+    const usuario = await Usuario.findById( uid );
 
 
     res.json({
         ok: true,
-        usuarioUID,
-        nuevoJWT
+        usuario,
+        token
     });
 
 }
